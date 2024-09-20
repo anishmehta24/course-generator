@@ -8,6 +8,8 @@ import SelectCategory from './_components/SelectCategory';
 import TopicDesc from './_components/TopicDesc';
 import SelectOption from './_components/SelectOption';
 import { UserInputContext } from '../_context/UserInputContext';
+import { GenerateCourseLayout_AI } from '@/configs/AiModel';
+import LoadingDialogue from './_components/LoadingDialogue';
 
 function CreateCourse() {
     const StepperOptions = [
@@ -32,6 +34,7 @@ function CreateCourse() {
 
 const [activeIndex,setActiveIndex] = useState(0);
 const {userCourseInput,setUserCourseInput} = useContext(UserInputContext);
+const [loading,setLoading] = useState(false);
 
 const checkStatus = ()=>{
     if(userCourseInput?.length==0)
@@ -50,6 +53,18 @@ const checkStatus = ()=>{
         return true;
     }
     return false;
+}
+
+const GenerateCourseLayout = async()=>{
+    setLoading(true);
+    const BASIC_PROMPT='Generate a course tutorial on following Detail with field as course name,description,along with chapter name,About,Duration:'
+    const USER_INPUT_PROMPT='Category: '+userCourseInput?.category+',Topic: '+userCourseInput?.topic+',Level: '+userCourseInput?.level+',Duration: '+userCourseInput?.duration+', NoOfChapters: '+userCourseInput.noOfChapters+', in JSON forma' 
+    const FINAL_PROMT = BASIC_PROMPT+USER_INPUT_PROMPT;
+    console.log(FINAL_PROMT);
+    const result = await GenerateCourseLayout_AI.sendMessage(FINAL_PROMT);
+    console.log(result.response?.text());
+    console.log(JSON.parse(result.response?.text())) ;
+    setLoading(false);
 }
 
   return (
@@ -88,10 +103,10 @@ const checkStatus = ()=>{
         <div className='flex justify-between mt-5 p-5'>
             <Button disabled={activeIndex==0} variant = 'outline' onClick={()=>setActiveIndex(activeIndex-1)}>Previous</Button>
            {activeIndex < StepperOptions.length-1 &&  <Button disabled={checkStatus()} onClick={()=>setActiveIndex(activeIndex+1)}>Next</Button> }
-          {activeIndex == StepperOptions.length-1 &&  <Button disabled={checkStatus()} onClick={()=>setActiveIndex(activeIndex+1)}>Generate Course Layout</Button> }
+          {activeIndex == StepperOptions.length-1 &&  <Button disabled={checkStatus()} onClick={()=>GenerateCourseLayout()}>Generate Course Layout</Button> }
         </div>
         </div>
-
+        <LoadingDialogue loading={loading}/>
     </div>
   )
 }
