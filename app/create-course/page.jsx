@@ -40,7 +40,7 @@ function CreateCourse() {
 const [activeIndex,setActiveIndex] = useState(0);
 const {userCourseInput,setUserCourseInput} = useContext(UserInputContext);
 const [loading,setLoading] = useState(false);
-const user = useUser();
+const {user} = useUser();
 const router = useRouter();
 
 const checkStatus = ()=>{
@@ -85,9 +85,9 @@ const SaveCourseLayoutInDb = async (courseLayout)=>{
         level:userCourseInput?.level,
         category:userCourseInput?.category,
         courseOutput:courseLayout,
-        createdby:user?.user.primaryEmailAddress.emailAddress,
-        userName:user?.user.fullName,
-        userProfileImage:user?.user.imageUrl
+        createdby:user?.primaryEmailAddress?.emailAddress,
+        userName:user?.fullName,
+        userProfileImage:user?.imageUrl
     })
     console.log("finish");
   

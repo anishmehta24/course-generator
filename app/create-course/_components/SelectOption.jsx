@@ -45,7 +45,7 @@ function SelectOption() {
                     <SelectContent>
                         <SelectItem value="1 Hour">1 Hour</SelectItem>
                         <SelectItem value="2 Hours">2 Hours</SelectItem>
-                        <SelectItem value="More than 3 Hours">More than 3 Hours</SelectItem>
+                        <SelectItem value="More than 3 Hours">3 Hours</SelectItem>
                     </SelectContent>
                 </Select>
                </div>
