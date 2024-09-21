@@ -28,13 +28,13 @@ function CourseLayout({params}) {
       <h2 className='font-bold text-center text-2xl'>Course Layout</h2>
 
       {/* Basic Info */}
-      <CourseBasicInfo course = {course}/>
+      <CourseBasicInfo course = {course} refreshData={()=>GetCourse()}/>
 
       {/* Course Details  */}
       <CourseDetail course = {course}/>
 
       {/* List Of Lesson  */}
-      <ChapterList course = {course}/>
+      <ChapterList course = {course} refreshData={()=>GetCourse()}/>
     </div>
   )
 }

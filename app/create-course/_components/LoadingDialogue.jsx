@@ -16,7 +16,7 @@ import Image from 'next/image'
 function LoadingDialogue({loading}) {
   return (
     <AlertDialog open={loading}>
-  <AlertDialogTrigger>Open</AlertDialogTrigger>
+  <AlertDialogTrigger></AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
     

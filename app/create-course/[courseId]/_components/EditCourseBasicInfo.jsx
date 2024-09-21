@@ -19,7 +19,7 @@ import { CourseList } from '@/configs/schema';
 import { eq } from 'drizzle-orm';
   
 
-function EditCourseBasicInfo({course}) {
+function EditCourseBasicInfo({course , refreshData}) {
 
     const [name,setName] = useState();
     const [description,setDescription] = useState();
@@ -36,7 +36,8 @@ function EditCourseBasicInfo({course}) {
             courseOutput:course?.courseOutput
         }).where(eq(CourseList?.id,course?.id))
         .returning({id:CourseList.id});
-        console.log(result);
+        
+        refreshData(true);
     }
 
 
@@ -54,7 +55,7 @@ function EditCourseBasicInfo({course}) {
        <div>
             <label >Description</label>
             <Textarea className='h-40' defaultValue={course?.courseOutput?.course?.description}
-            onChange={(event)=>setdescription(event?.target.value)}/>
+            onChange={(event)=>setDescription(event?.target.value)}/>
        </div>
       </DialogDescription>
     </DialogHeader>
