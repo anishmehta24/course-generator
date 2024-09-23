@@ -21,7 +21,7 @@ function CourseBasicInfo({course , refreshData}) {
 
     const storageRef=ref(storage,'courseCurator/'+fileName)
     await uploadBytes(storageRef,file).then((snapshot)=>{
-      console.log("upload file completed")
+      // console.log("upload file completed")
     }).then(resp=>{
       getDownloadURL(storageRef).then(async(downloadUrl)=>{
         console.log(downloadUrl)
