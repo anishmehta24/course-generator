@@ -1,6 +1,6 @@
 "use client"
 import { db } from '@/configs/db'
-import { CourseList } from '@/configs/schema'
+import { Chapters, CourseList } from '@/configs/schema'
 import { useUser } from '@clerk/nextjs'
 import { and, eq } from 'drizzle-orm'
 import React, { useEffect, useState } from 'react'
@@ -11,11 +11,13 @@ import { Button } from '@/components/ui/button'
 import { GenerateChapterContent_AI } from '@/configs/AiModel'
 import LoadingDialogue from '../_components/LoadingDialogue'
 import service from '@/configs/service'
+import { useRouter } from 'next/navigation'
 
 function CourseLayout({params}) {
   const {user} = useUser();
   const [course,setCourse] = useState([]);
   const [loading,setLoading] = useState(false);
+  const router = useRouter();
   useEffect(()=>{
     console.log(params)
     params&&GetCourse();
@@ -36,28 +38,39 @@ function CourseLayout({params}) {
       const PROMPT = 'Explain the concept in detail on Topic:'+course?.name+' , Chapter:'+chapter.name+' , in JSON Format with list of array with field as title,explan ation on given chapter on detail ,Code Example(Code field in <precode format) if applicable'
       console.log(PROMPT);
 
-      if(index<3)
-      {
+      // if(index<3)
+      // {
         try {
           let videoId=' ';
-          const result =  await GenerateChapterContent_AI.sendMessage(PROMPT);
-          console.log(result?.response?.text());
           //GENERATE VIDEO URL
-
           service.getVideos(course?.name+':'+chapter?.name).then(resp=>{
             console.log(resp)
-            videoId=resp?.id?.videoId
+            videoId=resp[0]?.id?.videoId
           })
-          // await db.insert(ChapterList).values({
 
-          // })
+          const result =  await GenerateChapterContent_AI.sendMessage(PROMPT);
+          console.log(result?.response?.text());
+          const content = JSON.parse(result?.response?.text());
+          
+
+       
+          await db.insert(Chapters).values({
+            chapterId:index,
+            courseId:course?.courseId,
+            content:content,
+            videoId:videoId
+          })
           setLoading(false);
 
         } catch (e) {
           setLoading(false);
           console.log(e);
         }
-      }
+        await db.update(CourseList).set({
+          publish:true
+        })
+        router.replace('/create-course/'+course?.courseId+"/finish")
+      // }
     })
   }
   return (
