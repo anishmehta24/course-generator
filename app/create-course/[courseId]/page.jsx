@@ -13,6 +13,7 @@ import LoadingDialogue from '../_components/LoadingDialogue'
 import service from '@/configs/service'
 import { useRouter } from 'next/navigation'
 
+
 function CourseLayout({params}) {
   const {user} = useUser();
   const [course,setCourse] = useState([]);

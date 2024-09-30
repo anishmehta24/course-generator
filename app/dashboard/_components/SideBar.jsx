@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoHomeOutline } from "react-icons/io5";
 import { GoStack } from "react-icons/go";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
@@ -9,7 +9,11 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Progress } from '@/components/ui/progress';
 
+import { UserCourseListContext } from '@/app/_context/UserCourseListContext';
+
 function SideBar() {
+
+  const {userCourseList,setUserCourseList} = useContext(UserCourseListContext);
   const Menu = [
     {
       id:1,
@@ -46,7 +50,7 @@ function SideBar() {
   const path = usePathname();
   return (
     <div className='fixed h-full md:w-64 p-5 shadow-md'>
-      <Image src={'/logo.png'} width={100} height={100}/>
+      <Image src={'/logo.png'} alt='image' width={100} height={100}/>
       <hr className='my-5'/>
       <ul>
        
@@ -63,9 +67,9 @@ function SideBar() {
       </ul>
 
       <div className='absolute bottom-10  w-[80]'>
-        <Progress value = {33}/>
+        <Progress value = {(userCourseList?.length/5)*100}/>
         
-        <h2 className='text-sm my-2'>3 out of 5 courses completed</h2>
+        <h2 className='text-sm my-2'>{userCourseList?.length} out of 5 courses completed</h2>
         <h2 className='text-xs text-gray-500'>Upgrade your plan for unlimited course creation</h2>
 
        
