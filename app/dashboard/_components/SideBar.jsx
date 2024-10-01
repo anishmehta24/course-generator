@@ -33,14 +33,14 @@ function SideBar() {
       id:3,
       name:'Upgrade',
       icon:<IoShieldCheckmarkOutline />,
-      path:'/dashboard/upgrade'
+      path:'/dashboard/'
 
     },
     {
       id:4,
       name:'Logout',
       icon:<IoMdLogOut/>,
-      path:'/dashboard/logout'
+      path:'/dashboard/'
 
     },
 
