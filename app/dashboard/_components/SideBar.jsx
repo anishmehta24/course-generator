@@ -18,14 +18,14 @@ function SideBar() {
     {
       id:1,
       name:'All Course',
-      icon:<IoHomeOutline />,
+      icon:<GoStack/>,
       path:'/dashboard/explore'
 
     },
     {
       id:2,
       name:'My Courses',
-      icon:<GoStack/>,
+      icon:<IoHomeOutline />,
       path:'/dashboard'
 
     },

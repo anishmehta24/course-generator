@@ -23,8 +23,8 @@ function Explore() {
   }
   return (
     <div>
-      <h2 className='font-bold text-3xl '>Explore more Projects</h2>
-      <p>Explore More Project build with AI by other users</p>
+      <h2 className='font-bold text-3xl '>Explore all Projects</h2>
+      <p>Explore the Project build with AI by other users</p>
 
       <div className='grid grid-cols-2 lg:grid-cols-3 gap-5'>
         {courseList?.map((course,index)=>(
@@ -36,7 +36,9 @@ function Explore() {
 
       <div className='flex justify-between mt-5'>
         {pageIndex!=0 && <Button onClick={()=>setPageIndex(pageIndex-1)}>Previous Page</Button>}
-      <Button onClick={()=>setPageIndex(pageIndex+1)}>Next Page</Button>
+        {pageIndex!=0 &&<Button onClick={()=>setPageIndex(pageIndex+1)} > Next Page </Button>}
+        {pageIndex==0 && <button onClick={()=>setPageIndex(pageIndex-1)}></button>}
+        {pageIndex==0 && <Button className="" onClick={()=>setPageIndex(pageIndex+1)} > Next Page </Button>}
       </div>
 
 
