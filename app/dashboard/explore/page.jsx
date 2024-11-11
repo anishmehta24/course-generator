@@ -4,6 +4,7 @@ import { CourseList } from '@/configs/schema'
 import React, { useEffect, useState } from 'react'
 import CourseCard from '../_components/CourseCard';
 import { Button } from '@/components/ui/button';
+import AddCourse from '../_components/AddCourse';
 
 function Explore() {
 
@@ -23,7 +24,8 @@ function Explore() {
   }
   return (
     <div>
-      <h2 className='font-bold text-3xl '>Explore all Projects</h2>
+      <AddCourse/>
+      <h2 className='font-bold text-3xl mt-10 '>Explore all Projects</h2>
       <p>Explore the Project build with AI by other users</p>
 
       <div className='grid grid-cols-2 lg:grid-cols-3 gap-5'>

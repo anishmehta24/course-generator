@@ -39,14 +39,19 @@ function FinishScreen({params}) {
             onClick={async()=>await navigator.clipboard.writeText(process.env.NEXT_PUBLIC_HOST_NAME+"/course/view/"+course?.courseId)}/>
         </h2>
 
-      <div className='flex justify-center mt-3'> <h2 className='font-medium'>New Course has been added to your profile</h2></div> 
 
 
         <div className='flex text-center justify-center'> 
           
-          <Link href='/dashboard'><Button className='mt-3 '>Go to Dashboard</Button></Link>
+          <Link href={'/course/'+course?.courseId}><Button className='mt-3'>Go to Course Page</Button></Link>
 
-           </div>
+        </div>
+      <div className='flex justify-center mt-3'> <h2 className='font-medium'>New Course has been added to your profile</h2></div> 
+        <div className='flex text-center justify-center'> 
+          
+          <Link href='/dashboard'><Button className='mt-3 '>Go to My Courses</Button></Link>
+
+        </div>
         <div className='flex justify-center mt-3'>  <p className='text-sm text-gray-500'>Start the course and begin your learning journey</p> </div>
         
     </div>
