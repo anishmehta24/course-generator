@@ -17,16 +17,16 @@ function SideBar() {
   const Menu = [
     {
       id:1,
-      name:'Home',
+      name:'All Course',
       icon:<IoHomeOutline />,
-      path:'/dashboard'
+      path:'/dashboard/explore'
 
     },
     {
       id:2,
-      name:'Explore',
+      name:'My Courses',
       icon:<GoStack/>,
-      path:'/dashboard/explore'
+      path:'/dashboard'
 
     },
     {
