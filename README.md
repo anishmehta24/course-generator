@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Course Generator Website
 
-## Getting Started
+This web application generates customized courses based on user recommendations. It dynamically creates a course layout with chapters and content, allowing users to modify the structure before finalizing the course. The app integrates with both the YouTube API to fetch relevant videos for each chapter and the Gemini API to generate content.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Personalized Course Creation**: Users provide preferences and recommendations, which the app uses to generate a course layout with chapters.
+- **Editable Course Structure**: Once the course layout is generated, users can make modifications to chapters, reorder content, or add/remove sections.
+- **YouTube API Integration**: The app fetches relevant videos for each chapter using the YouTube API.
+- **Dynamic Chapter Content**: Each chapter contains automatically generated content , code examples (if required) and videos based on user preferences.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js
+- **Database**: PostgreSQL
+- **External APIs**: 
+  - YouTube API (for fetching videos)
+  - Gemini API (for generating chapter content)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
