@@ -62,8 +62,11 @@ const checkStatus = ()=>{
     return false;
 }
 
+    let i = 1;
+
 const GenerateCourseLayout = async()=>{
     setLoading(true);
+    console.log(i++);
     const BASIC_PROMPT='Generate a course tutorial on following Detail with field as course name,description,along with chapter name,About,Duration:'
     const USER_INPUT_PROMPT='Category: '+userCourseInput?.category+',Topic: '+userCourseInput?.topic+',Level: '+userCourseInput?.level+',Duration: '+userCourseInput?.duration+', NoOfChapters: '+userCourseInput.noOfChapters+', in JSON forma' 
     const FINAL_PROMT = BASIC_PROMPT+USER_INPUT_PROMPT;

@@ -19,13 +19,13 @@ function FinishScreen({params}) {
       console.log(params)
       params&&GetCourse();
     },[params,user])
-  
+
     const GetCourse = async()=>{
       const result = await db.select().from(CourseList)
       .where(and(eq(CourseList.courseId,params?.courseId),
       eq(CourseList.createdby,user?.primaryEmailAddress?.emailAddress)))
       setCourse(result[0]);
-      console.log(result)
+      console.log(i++);
     }
   
   return (
@@ -42,9 +42,7 @@ function FinishScreen({params}) {
 
 
         <div className='flex text-center justify-center'> 
-          
           <Link href={'/course/'+course?.courseId}><Button className='mt-3'>Go to Course Page</Button></Link>
-
         </div>
       <div className='flex justify-center mt-3'> <h2 className='font-medium'>New Course has been added to your profile</h2></div> 
         <div className='flex text-center justify-center'> 
