@@ -25,7 +25,7 @@ function FinishScreen({params}) {
       .where(and(eq(CourseList.courseId,params?.courseId),
       eq(CourseList.createdby,user?.primaryEmailAddress?.emailAddress)))
       setCourse(result[0]);
-      console.log(i++);
+     
     }
   
   return (

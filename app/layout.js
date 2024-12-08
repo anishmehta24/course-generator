@@ -29,7 +29,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.className} ${geistMono.variable} antialiased`}
       >
+        <div >
         {children}
+        </div>
       </body>
     </html>
     </ClerkProvider>
